@@ -19,7 +19,7 @@ router.get('/categorias',function (req, res) {
         req.flash("erro_msg","Houve um erro ao liostar as categorias")
         res.redirect('/admin')
     })
-    
+
 })
 
 router.post('/categorias/nova',function (req, res) {
@@ -47,7 +47,7 @@ router.post('/categorias/nova',function (req, res) {
             nome: req.body.nome,
             slug: req.body.slug
         }
-    
+
         new Categoria(novaCategoria).save().then(function(){
             req.flash("success_msg","Categoria criado com sucesso!") // passado a mensagem para a variável
             res.redirect("/admin/categorias")
@@ -61,13 +61,13 @@ router.post('/categorias/nova',function (req, res) {
 
 router.get("/categorias/edit/:id",function(req,res){
     Categoria.findOne({_id:req.params.id}).lean().then(function(categoria){
-        
+
         res.render("admin/editcategorias",{categoria:categoria})
     }).catch(function(err){
         req.flash("error_msg","Esta categoria não existe")
         res.redirect("/admin/categorias")
     })
-    
+
 })
 //Editar valor
 router.post('/categorias/edit',function(req,res){
@@ -105,13 +105,13 @@ router.get('/postagens',function(req,res){
 })
 
 router.get('/postagens/add',function(req,res){
-    Categoria.find().then(function(categorias){
+    Categoria.find().lean().then(function(categorias){
         res.render("admin/addpostagem",{categorias:categorias})
     }).catch(function(err){
         req.flash("error_msg","Houve um erro ao carregar o formulário")
         res.redirect("/admin")
     })
-    
+
 })
 
 module.exports = router
