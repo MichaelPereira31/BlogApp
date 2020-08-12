@@ -3,12 +3,13 @@
 {{else}}
 
 {{/each}}
-{{categoria}}
+
 <h3>Editar Categoria:</h3>
 <div class="card">
     <div class="card-body">
 
-        <form action="/admin/categorias/nova" method="post">
+        <form action="/admin/categorias/edit" method="post">
+            <input type="hidden" name="id" value="{{categoria._id}}">
             <label for="nome">Nome:</label>
             <input type="text" name="nome" id="nome" class="form-control" value="{{categoria.nome}}">
 
