@@ -1,0 +1,28 @@
+<div class="jumbotron">
+  <h1 class="display-4">Bem-Vindo ao BlogApp</h1>
+  <p class="lead">Este é um Blog simples, desenvolvido com Node.js + Express + MongoDB</p>
+  <hr class="my-4">
+  <p>Aqui você vai poder ler sobre as novidades do mundo da computação.</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Crie uma conta</a>
+</div>
+<hr>
+<h2>Postagens Recentes:</h2>
+
+{{#each postagens}}
+<div class="card mb-3">
+    <div class="card-body">
+
+        <h3>{{titulo}}</h3>
+        <p>{{descricao}}</p>
+        <a href="/postagem/{{slug}}">
+            <button class="btn btn-success">Leia mais</button>
+        </a>
+        <hr>
+        <small>Categoria: {{categoria.nome}}</small><br>
+        <small>Data de publicação: {{data}}</small>
+        
+    </div>
+</div>
+{{else}}
+
+{{/each}}

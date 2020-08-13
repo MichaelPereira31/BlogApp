@@ -3,3 +3,23 @@
 <a href="/admin/postagens/add">
     <button class="btn btn-success">Nova Postagem</button>
 </a>
+
+{{#each postagens}}
+    <div class="card">
+        <div class="card-body">
+            <h4>{{titulo}}</h4>
+            <p>Descrição: {{descricao}}</p>
+            <small>Data: {{data}}</small><br>
+            <small>Categoria: {{categoria.nome}}</small><br>
+            <a href="/admin/postagens/edit/{{_id}}">
+                <button class="btn btn-success mt-3">Editar Postagem</button>
+            </a>
+            <a href="/admin/postagens/deletar/{{_id}}">
+                <button class="btn btn-danger mt-3">Deletar Postagem</button>
+            </a>
+        </div>
+
+    </div>
+{{else}}
+<p>Nenhuma Postagem registrada</p>
+{{/each}}

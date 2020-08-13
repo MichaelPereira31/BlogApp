@@ -8,11 +8,15 @@ const Postagem = new Schema({
     },
     slug:{
         type: String,
-        required:tre
+        required:true
     },
     descricao:{
         type:String,
         required:true
+    },
+    conteudo:{
+        type:String,
+        required: true
     },
     categoria:{
         type:Schema.Types.ObjectId,

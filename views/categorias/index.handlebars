@@ -1,0 +1,14 @@
+
+<div class="card">
+    <h4 class="pl-2">Categorias: </h4>
+<hr>
+    <div class="car-body">
+        {{#each categorias}}
+            <a href="/categorias/{{slug}}">
+                <h4 class="pl-2">{{nome}}</h4>
+            </a>
+        {{else}}
+
+        {{/each}}
+    </div>
+</div>
