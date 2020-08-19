@@ -12,10 +12,16 @@
 
     require('./models/Categoria')
     const Categoria = mongoose.model('categorias')
+
+    const passport = require('passport')
+    require('./config/auth')(passport)
+
+    const usuarios = require('./routes/usuario')
     //Recebendo Rotas
         const admin = require('./routes/admin')
     //Trabalhar com diretórios
-        const path = require('path')
+        const path = require('path');
+    
 
 
 
@@ -26,11 +32,15 @@
             resave: true,
             saveUninitialized: true
         }))
+
+        app.use(passport.initialize())
+        app.use(passport.session())
         app.use(flash())
     //Middleware
         app.use(function(req,res,next){
             res.locals.success_msg = req.flash('success_msg')
             res.locals.error_msg = req.flash('error_msg')
+            res.locals.error = req.flash("error")
             next()
         })
     //Body Parser
@@ -115,7 +125,8 @@
     })
 
     app.use('/admin',admin)
-
+    
+    app.use('/usuarios',usuarios)
 
 
 
