@@ -24,7 +24,7 @@ module.exports = function(passport){
     }))
     // quanod logado os dados fica salvo na seção
     passport.serializeUser(function(usuario,done){
-        done(null, usuario)
+        done(null,usuario)
     })
 
     passport.deserializeUser(function(id,done){

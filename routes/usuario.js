@@ -99,6 +99,12 @@ router.post('/registro', function(req,res){
     })(req,res,next)
     })
 
+    router.get('/logout',function(req,res){
+        req.logout()
+        req.flash("success_msg","Deslogado com sucesso")
+        res.redirect('/')
+    })
+
 
 
 module.exports = router
